@@ -161,7 +161,7 @@ public class StagingDeployMojo
 
         DefaultAsset asset = new DefaultAsset(deployableArtifact.getFile().getName(), stream);
 
-        asset.addAttribute("extension", deployableArtifact.getType());
+        asset.addAttribute("extension", deployableArtifact.getArtifactHandler().getExtension());
 
         if (deployableArtifact.getClassifier() != null) {
           asset.addAttribute("classifier", deployableArtifact.getClassifier());
@@ -225,7 +225,7 @@ public class StagingDeployMojo
       getLog().warn("The stagingMode property is no longer supported and will be ignored");
     }
   }
-  
+
   @VisibleForTesting
   void setArtifact(final Artifact artifact) {
     this.artifact = artifact;
@@ -245,7 +245,7 @@ public class StagingDeployMojo
   void setPomFile(final File pomFile) {
     this.pomFile = pomFile;
   }
-  
+
   @VisibleForTesting
   void setPackaging(final String packaging) {
     this.packaging = packaging;
