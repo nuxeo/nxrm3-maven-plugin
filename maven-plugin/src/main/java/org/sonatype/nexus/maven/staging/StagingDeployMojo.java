@@ -194,6 +194,7 @@ public class StagingDeployMojo
     }
     else if (file != null && file.isFile()) {
       deployables.add(artifact);
+      deployables.add(createPomArtifact());
     }
     else if (!attachedArtifacts.isEmpty() && !pomProject) {
       getLog().info("No primary artifact to deploy, deploying attached artifacts instead.");
